@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083867909411",
+    "project_id": "nutripair-3947c",
+    "storage_bucket": "nutripair-3947c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083867909411:android:ef3b34a23cba77a7b3d096",
+        "android_client_info": {
+          "package_name": "com.example.nutripair"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_k0ap9fgmXH1dSpqWOleEq4NNfzI-SzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
