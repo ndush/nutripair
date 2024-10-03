@@ -7,7 +7,7 @@ import 'package:nutripair/signup.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Initialize Firebase
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -20,14 +20,13 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    // Check the authentication state
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         print('User is currently signed out!');
         Navigator.pushReplacementNamed(context, '/signin');
       } else {
         print('User is signed in!');
-        Navigator.pushReplacementNamed(context, '/main');
+        Navigator.pushReplacementNamed(context, '/home');
       }
     });
   }
@@ -38,9 +37,9 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Firebase Auth',
       initialRoute: '/',
       routes: {
-        '/': (context) => SignUp(),
-        '/signin': (context) => SignIn(),
-        '/main': (context) => Home(), // Main app screen
+        '/': (context) => SignIn(),
+        '/signin': (context) => SignUp(),
+        '/home': (context) => Home(),
       },
     );
   }

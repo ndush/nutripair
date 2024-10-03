@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import 'home.dart'; // Ensure you import the Home screen
+import 'package:nutripair/home.dart';
+import 'signup.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -21,7 +21,6 @@ class _SignInState extends State<SignIn> {
         email: email,
         password: password,
       );
-      // Navigate to the Home screen after successful sign-in
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Home()),
@@ -41,25 +40,38 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Sign In')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => signIn(context),
-              child: Text('Sign In'),
-            ),
-          ],
+      body: Center( // Center the contents
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(labelText: 'Email'),
+              ),
+              TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(labelText: 'Password'),
+                obscureText: true,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () => signIn(context),
+                child: Text('Sign In'),
+              ),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUp()),
+                  );
+                },
+                child: Text("Don't have an account? Sign Up"),
+              ),
+            ],
+          ),
         ),
       ),
     );
