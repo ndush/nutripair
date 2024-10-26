@@ -73,6 +73,10 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
               onPressed: _savePreferences,
               child: Text('Save Preferences'),
             ),
+            ElevatedButton(
+              onPressed: () => Navigator.pushNamed(context, '/meal-builder'),
+              child: Text('Go to Meal Builder'),
+            ),
           ],
         ),
       ),
