@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nutripair/home.dart';
+import 'package:nutripair/screens/dietary_preference.dart';
+
 import 'signup.dart';
 
 class SignIn extends StatefulWidget {
@@ -23,7 +24,7 @@ class _SignInState extends State<SignIn> {
       );
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Home()),
+        MaterialPageRoute(builder: (context) => DietaryPreferences()),
       );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Sign In Successful')),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nutripair/home.dart';
-import 'package:nutripair/login.dart';
-import 'package:nutripair/signup.dart';
+import 'package:nutripair/screens/home.dart';
+import 'package:nutripair/screens/login.dart';
+import 'package:nutripair/screens/signup.dart';
+import 'package:nutripair/screens/dietary_preference.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env"); // Load the .env file
   await Firebase.initializeApp();
   runApp(MyApp());
 }
@@ -43,8 +46,7 @@ class _MyAppState extends State<MyApp> {
           iconTheme: IconThemeData(color: Colors.white),
         ),
         textTheme: TextTheme(
-
-
+          // Add your text styles here
         ),
         iconTheme: IconThemeData(
           color: Colors.yellow[800],
@@ -56,6 +58,7 @@ class _MyAppState extends State<MyApp> {
         '/signin': (context) => SignIn(),
         '/signup': (context) => SignUp(),
         '/home': (context) => Home(),
+        '/dietary-preference': (context) => DietaryPreferences(),
       },
     );
   }
