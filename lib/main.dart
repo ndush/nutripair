@@ -34,11 +34,27 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Firebase Auth',
-      initialRoute: '/',
+      title: 'NutriPair',
+      theme: ThemeData(
+        primaryColor: Colors.yellow[700],
+        scaffoldBackgroundColor: Colors.yellow[100],
+        appBarTheme: AppBarTheme(
+          color: Colors.yellow[700],
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+        textTheme: TextTheme(
+
+
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.yellow[800],
+        ),
+      ),
+      initialRoute: '/signin',
       routes: {
         '/': (context) => SignIn(),
-        '/signin': (context) => SignUp(),
+        '/signin': (context) => SignIn(),
+        '/signup': (context) => SignUp(),
         '/home': (context) => Home(),
       },
     );
