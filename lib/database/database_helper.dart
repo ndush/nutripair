@@ -36,8 +36,6 @@ class DatabaseHelper {
     final db = await database;
     await db.delete('meals', where: 'id = ?', whereArgs: [id]);
   }
-
-  // Add this method to fetch all logged meals
   Future<List<Map<String, dynamic>>> getLoggedMeals() async {
     final db = await database;
     return await db.query('meals');

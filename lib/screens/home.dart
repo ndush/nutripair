@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nutripair/screens/preferences.dart';
 import 'package:nutripair/screens/meal_logging.dart';
 import 'package:nutripair/widgets/meal_chart.dart';
-import 'package:nutripair/bottom_nav_bar.dart';
+import 'package:nutripair/widgets/bottom_nav_bar.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -29,8 +29,8 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavBar(
-        selectedIndex: _selectedIndex, // Pass the selected index
-        onTap: _onItemTapped,           // Pass the onTap callback
+        selectedIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }

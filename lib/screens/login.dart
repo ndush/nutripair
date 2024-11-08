@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nutripair/screens/preferences.dart';
+import 'package:nutripair/screens/home.dart';
+import 'package:nutripair/screens/signup.dart';
 
-
-import 'signup.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -25,7 +24,7 @@ class _SignInState extends State<SignIn> {
       );
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => DietaryPreferences()),
+        MaterialPageRoute(builder: (context) => MainScreen()),
       );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Sign In Successful')),
@@ -41,8 +40,9 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Sign In')),
-      body: Center( // Center the contents
+      backgroundColor: Colors.lightGreen[50],
+      appBar: AppBar(backgroundColor: Colors.green),
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -50,18 +50,40 @@ class _SignInState extends State<SignIn> {
             children: [
               TextField(
                 controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.green),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                ),
               ),
+              SizedBox(height: 10),
               TextField(
                 controller: _passwordController,
-                decoration: InputDecoration(labelText: 'Password'),
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  labelStyle: TextStyle(color: Colors.green),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                ),
                 obscureText: true,
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => signIn(context),
-                child: Text('Sign In'),
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  elevation: 5,
+                ),
               ),
+
               SizedBox(height: 20),
               TextButton(
                 onPressed: () {
@@ -70,7 +92,7 @@ class _SignInState extends State<SignIn> {
                     MaterialPageRoute(builder: (context) => SignUp()),
                   );
                 },
-                child: Text("Don't have an account? Sign Up"),
+                child: Text("Don't have an account? Sign Up", style: TextStyle(color: Colors.green)),
               ),
             ],
           ),

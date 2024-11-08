@@ -23,10 +23,10 @@ class BottomNavBar extends StatelessWidget {
           label: 'Meal Plan',
         ),
       ],
-      currentIndex: selectedIndex, // Use the passed selectedIndex
+      currentIndex: selectedIndex,
       selectedItemColor: Colors.green,
       unselectedItemColor: Colors.black,
-      onTap: onTap, // Use the passed onTap function
+      onTap: onTap,
     );
   }
 }

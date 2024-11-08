@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutripair/database/database_helper.dart';
 import 'package:nutripair/screens/summary_screen.dart';
-import 'package:nutripair/services/api_service.dart'; // Import your ApiService
+import 'package:nutripair/services/api_service.dart';
 
 class RecipeDetailScreen extends StatelessWidget {
   final String recipeId;
@@ -10,10 +10,9 @@ class RecipeDetailScreen extends StatelessWidget {
 
   Future<Map<String, dynamic>?> _fetchRecipeDetails(String id) async {
     try {
-      // Attempt to fetch recipe information; returns null if fetching fails
       return await ApiService().getRecipeInformation(int.parse(id));
     } catch (e) {
-      return null; // Return null on error
+      return null;
     }
   }
 
@@ -30,7 +29,7 @@ class RecipeDetailScreen extends StatelessWidget {
     try {
       await DatabaseHelper().insertMeal({
         'title': recipe['title'] ?? 'Unknown',
-        'nutritionalInfo': recipe['nutrition']?['nutrients']?.toString() ?? 'No nutrition info', // Safe access with null check
+        'nutritionalInfo': recipe['nutrition']?['nutrients']?.toString() ?? 'No nutrition info',
       });
 
       Navigator.pushReplacement(
@@ -69,9 +68,25 @@ class RecipeDetailScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      'Nutritional Information: ${recipe['nutrition']?['nutrients']?.map((nutrient) => '${nutrient['name']}: ${nutrient['amount']} ${nutrient['unit']}').join(', ') ?? 'No information available'}',
-                      style: TextStyle(fontSize: 16),
+                      'Nutritional Information:',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
+                    SizedBox(height: 8),
+                    ...(recipe['nutrition'] != null && recipe['nutrition']['nutrients'] != null
+                        ? recipe['nutrition']['nutrients'].map<Widget>((nutrient) {
+                      // Check for null values and format them properly
+                      final nutrientName = nutrient['name'] ?? 'Unknown nutrient';
+                      final nutrientAmount = nutrient['amount'] ?? 'N/A';
+                      final nutrientUnit = nutrient['unit'] ?? '';
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 4.0),
+                        child: Text(
+                          '$nutrientName: $nutrientAmount $nutrientUnit',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      );
+                    }).toList()
+                        : [Text('No nutritional information available')]),
                     SizedBox(height: 16),
                     Text(
                       'Ingredients:',

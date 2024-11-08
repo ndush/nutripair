@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:nutripair/screens/home.dart';
+import 'package:nutripair/screens/preferences.dart';
 import 'screens/login.dart';
 import 'screens/signup.dart';
 
@@ -9,7 +10,7 @@ import 'screens/signup.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Load the .env file
+
   await dotenv.load(fileName: ".env");
 
   await Firebase.initializeApp();
@@ -23,13 +24,16 @@ class MyApp extends StatelessWidget {
       title: 'NutriPair',
       theme: ThemeData(
         primarySwatch: Colors.green,
+        scaffoldBackgroundColor: Colors.lightGreen[50],
       ),
       initialRoute: '/signin',
       routes: {
+        '/': (context) => DietaryPreferences(),
         '/signin': (context) => SignIn(),
         '/signup': (context) => SignUp(),
-        '/main': (context) => MainScreen(), // Main screen with bottom navigation
+        '/main': (context) => MainScreen(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
