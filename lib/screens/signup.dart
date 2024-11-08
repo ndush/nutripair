@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nutripair/screens/login.dart';
+import 'package:nutripair/screens/preferences.dart';
 
 
 class SignUp extends StatefulWidget {
@@ -70,8 +71,9 @@ class _SignUpState extends State<SignUp> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => SignIn()),
+                    MaterialPageRoute(builder: (context) => DietaryPreferences()), // Redirect to preferences
                   );
+
                 },
                 child: Text("Already have an account? Sign In"),
               ),

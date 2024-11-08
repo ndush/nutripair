@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nutripair/screens/dietary_preference.dart';
+import 'package:nutripair/screens/preferences.dart';
+
 
 import 'signup.dart';
 
